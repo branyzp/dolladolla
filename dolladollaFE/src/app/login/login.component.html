@@ -1,3 +1,58 @@
-<p>login works!</p>
+<form class="login-card" id="login">
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input
+      type="email"
+      class="form-control"
+      type="text"
+      name="email"
+      #email="ngModel"
+      [(ngModel)]="currentUser.email"
+      required
+      autocomplete="email"
+      [email]="true"
+    />
+    <label class="form-label" for="form2Example1">Email address</label>
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="email.errors && (email.dirty || email.touched)"
+  >
+    <small>Please fill in the required email field with a valid email.</small>
+  </div>
 
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      [(ngModel)]="currentUser.password"
+      autocomplete="off"
+      required
+      #password="ngModel"
+    />
+    <label class="form-label" for="form2Example2">Password</label>
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="password.errors && (password.dirty || password.touched)"
+  >
+    <small
+      >Please fill in the required password field with a valid password.</small
+    >
+  </div>
 
+  <!-- Submit button -->
+  <button type="button" class="btn btn-primary btn-block mb-4" type="submit">
+    Login
+  </button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>
+      Not a member?
+      <button class="btn btn-primary mb-4" (click)="signUp()">Register</button>
+    </p>
+  </div>
+</form>
