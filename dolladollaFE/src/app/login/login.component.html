@@ -1,4 +1,4 @@
-<form class="login-card" id="login">
+<form class="login-card" id="login" #f="ngForm" novalidate>
   <!-- Email input -->
   <div class="form-outline mb-4">
     <input
@@ -8,9 +8,9 @@
       name="email"
       #email="ngModel"
       [(ngModel)]="currentUser.email"
-      required
       autocomplete="email"
       [email]="true"
+      required
     />
     <label class="form-label" for="form2Example1">Email address</label>
   </div>
@@ -29,8 +29,9 @@
       name="password"
       [(ngModel)]="currentUser.password"
       autocomplete="off"
-      required
+      minlength="6"
       #password="ngModel"
+      required
     />
     <label class="form-label" for="form2Example2">Password</label>
   </div>
@@ -44,7 +45,11 @@
   </div>
 
   <!-- Submit button -->
-  <button type="button" class="btn btn-primary btn-block mb-4" type="submit">
+  <button
+    [disabled]="!f.form.valid"
+    class="btn btn-primary btn-block mb-4"
+    type="submit"
+  >
     Login
   </button>
 

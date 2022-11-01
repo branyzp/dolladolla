@@ -34,4 +34,10 @@ export class LoginComponent implements OnInit {
     el?.scrollIntoView();
   }
 
+  // checkLogin(value: any,valid: any,form: any) {
+  //   if (valid) {
+  //     this.login();
+  //   }
+  // }
+
 }
