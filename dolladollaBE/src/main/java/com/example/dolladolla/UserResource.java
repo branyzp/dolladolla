@@ -23,7 +23,7 @@ public class UserResource {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        
+
         User newUser = userService.addUser(user);
 
         return new ResponseEntity<>(newUser,HttpStatus.CREATED);
