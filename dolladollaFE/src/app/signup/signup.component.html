@@ -1,4 +1,10 @@
-<form class="signup-card" id="signup" #f="ngForm" novalidate>
+<form
+  class="signup-card"
+  id="signup"
+  #f="ngForm"
+  (ngSubmit)="checkForm(f.value,f.valid,f)"
+  novalidate
+>
   <!-- First Name input -->
   <div class="col-sm-6 offset-sm-3">
     <h1>Sign up Form</h1>

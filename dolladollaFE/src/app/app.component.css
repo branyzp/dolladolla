@@ -7,6 +7,8 @@
       -moz-osx-font-smoothing: grayscale;
   }
 
+  
+
   h1,
   h2,
   h3,
@@ -224,6 +226,9 @@
       line-height: 20px;
   }
 
+  
+
+
   footer a {
       display: flex;
       align-items: center;
@@ -262,6 +267,7 @@
       width: 1920px;
   }
 
+  
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
@@ -291,3 +297,6 @@
           visibility: hidden;
       }
   }
+
+
+  

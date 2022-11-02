@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { User } from '../models/user-model';
 
@@ -23,6 +24,10 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  signUp() {
+    console.log(this.newUser);
+  }
+
   scrollToTop() {
     const el = document.getElementById('signup');
     el?.scrollIntoView();
@@ -30,6 +35,12 @@ export class SignupComponent implements OnInit {
 
   onSignUpSuccess() {
     this.router.navigate(['/dashboard']);
+  }
+
+  checkForm(value: string, valid: boolean | null, form:Form) {
+    if (valid) {
+      this.signUp();
+    }
   }
 
   
