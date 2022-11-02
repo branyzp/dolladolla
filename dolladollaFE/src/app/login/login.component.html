@@ -1,63 +1,65 @@
 <form class="login-card" id="login" #f="ngForm" novalidate>
-  <!-- Email input -->
-  <div class="form-outline mb-4">
-    <input
-      type="email"
-      class="form-control"
-      type="text"
-      name="email"
-      #email="ngModel"
-      [(ngModel)]="currentUser.email"
-      autocomplete="email"
-      [email]="true"
-      required
-    />
-    <label class="form-label" for="form2Example1">Email address</label>
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="email.errors && (email.dirty || email.touched)"
-  >
-    <small>Please fill in the required email field with a valid email.</small>
-  </div>
-
-  <!-- Password input -->
-  <div class="form-outline mb-4">
-    <input
-      type="password"
-      class="form-control"
-      name="password"
-      [(ngModel)]="currentUser.password"
-      autocomplete="off"
-      minlength="6"
-      #password="ngModel"
-      required
-    />
-    <label class="form-label" for="form2Example2">Password</label>
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="password.errors && (password.dirty || password.touched)"
-  >
-    <small
-      >Please fill in the required password field with a valid password.</small
+  <div class="col-sm-6 offset-sm-3">
+    <h1>User Login</h1>
+    <!-- Email input -->
+    <div class="form-outline">
+      <input
+        type="email"
+        class="form-control"
+        type="text"
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="currentUser.email"
+        autocomplete="email"
+        [email]="true"
+        required
+      />
+      <label class="form-label" for="form2Example1">Email address</label>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="email.errors && (email.dirty || email.touched)"
     >
-  </div>
+      <small>Please fill in the required email field with a valid email.</small>
+    </div>
 
-  <!-- Submit button -->
-  <button
-    [disabled]="!f.form.valid"
-    class="btn btn-primary btn-block mb-4"
-    type="submit"
-  >
-    Login
-  </button>
+    <!-- Password input -->
+    <div class="form-outline">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        [(ngModel)]="currentUser.password"
+        autocomplete="off"
+        minlength="6"
+        #password="ngModel"
+        required
+      />
+      <label class="form-label" for="form2Example2">Password</label>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="password.errors && (password.dirty || password.touched)"
+    >
+      <small
+        >Please fill in the required password field with a valid
+        password.</small
+      >
+    </div>
 
-  <!-- Register buttons -->
-  <div class="text-center">
-    <p>
-      Not a member?
-      <button class="btn btn-primary mb-4" (click)="signUp()">Register</button>
-    </p>
+    <!-- Submit button -->
+    <button
+      [disabled]="!f.form.valid"
+      class="btn btn-primary btn-block"
+      type="submit"
+    >
+      Login
+    </button>
+
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Not a member?</p>
+      <button class="btn btn-primary" (click)="signUp()">Register</button>
+    </div>
   </div>
 </form>

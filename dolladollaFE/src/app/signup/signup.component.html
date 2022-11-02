@@ -1,1 +1,109 @@
-<p>signup works!</p>
+<form class="signup-card" id="signup" #f="ngForm" novalidate>
+  <!-- First Name input -->
+  <div class="col-sm-6 offset-sm-3">
+    <h1>Sign up Form</h1>
+    <div class="form-outline">
+      <input
+        type="text"
+        class="form-control"
+        name="firstName"
+        #firstName="ngModel"
+        [(ngModel)]="newUser.firstName"
+        autocomplete="given-name"
+        required
+        minlength="2"
+      />
+      <label class="form-label" for="">First Name</label>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+    >
+      <small>Please fill in your first name (minimum 2 characters)</small>
+    </div>
+    <!-- Last Name input -->
+
+    <div class="form-outline">
+      <input
+        type="text"
+        class="form-control"
+        name="lastName"
+        #lastName="ngModel"
+        [(ngModel)]="newUser.lastName"
+        autocomplete="family-name"
+        required
+        minlength="2"
+      />
+      <label class="form-label" for="">Last Name</label>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+    >
+      <small>Please fill in your last name. (minimum 2 characters)</small>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline">
+      <input
+        type="email"
+        class="form-control"
+        type="text"
+        name="email"
+        #email="ngModel"
+        [(ngModel)]="newUser.email"
+        autocomplete="email"
+        [email]="true"
+        required
+      />
+      <label class="form-label" for="email">Email address</label>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="email.errors && (email.dirty || email.touched)"
+    >
+      <small>Please fill in the required email field with a valid email.</small>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline">
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        [(ngModel)]="newUser.password"
+        autocomplete="off"
+        minlength="6"
+        #password="ngModel"
+        required
+      />
+      <label class="form-label" for="password">Password</label>
+    </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="password.errors && (password.dirty || password.touched)"
+    >
+      <small
+        >Please fill in the required password field with a valid
+        password.</small
+      >
+    </div>
+
+    <!-- Submit button -->
+    <button
+      [disabled]="!f.form.valid"
+      class="btn btn-primary btn-block mb-4"
+      type="submit"
+    >
+      Register as New User
+    </button>
+
+    <!-- Register buttons -->
+    <div class="text-center">
+      <p>Already have an account?</p>
+      <button class="btn btn-primary mb-4" (click)="login()">
+        Sign in here
+      </button>
+    </div>
+  </div>
+</form>
