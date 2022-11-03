@@ -1,9 +1,13 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { User } from '../models/user-model';
+import { SignupService } from '../services/signup.service';
+
 
 @Component({
+ 
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
@@ -14,6 +18,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private signupService: SignupService,
   ) { }
 
   ngOnInit(): void {
@@ -24,8 +29,17 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  signUp() {
-    console.log(this.newUser);
+  signUp(f: NgForm) {
+    this.signupService.addUser(f.value).subscribe((response: User) => {
+      console.log(response);
+      f.reset();
+      this.router.navigate(['/dashboard']);
+    }),
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    
+    // console.log((this.newUser));
   }
 
   scrollToTop() {
@@ -37,9 +51,9 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
-  checkForm(value: string, valid: boolean | null, form:Form) {
+  checkForm(value: string, valid: boolean | null, f:NgForm) {
     if (valid) {
-      this.signUp();
+      this.signUp(f);
     }
   }
 

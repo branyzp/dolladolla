@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user-model';
 
@@ -34,10 +35,14 @@ export class LoginComponent implements OnInit {
     el?.scrollIntoView();
   }
 
-  // checkLogin(value: any,valid: any,form: any) {
-  //   if (valid) {
-  //     this.login();
-  //   }
-  // }
+  login(f:NgForm) {
+    console.log(f);
+  }
+
+  checkForm(value: string, valid: boolean | null, f:NgForm) {
+    if (valid) {
+      this.login(f);
+    }
+  }
 
 }
